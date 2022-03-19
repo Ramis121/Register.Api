@@ -1,0 +1,55 @@
+﻿@model Register.Api.Services.RegisterService
+@{
+    var error = TempData["Error"] as string;
+    var reg = TempData["Regis"] as string;
+}
+<h3>Registration</h3>
+
+<form asp-antiforgery="true" asp-action="Register" method="post" asp-controller="Home">
+
+    <div>
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+
+        <div>
+            <label>Введите свое имя</label><br />
+            <input type="text" asp-for="name_r" />
+            <span asp-validation-for="name_r"></span>
+        </div>
+
+        <div>
+            <label>Введите номер телефона</label><br />
+            <input type="text" name="phone_r" />
+            <span asp-validation-for="phone_r"></span>
+        </div>
+
+        <div>
+            <label>Введите свое Фамилия</label><br />
+            <input type="text" name="surname_r" />
+            <span asp-validation-for="surname_r"></span>
+        </div>
+
+        <div>
+            <label>Расскажите о себе</label><br />
+            <input type="text" name="about_me_r" />
+            <span asp-validation-for="about_me_r"></span>
+        </div>
+
+        <div>
+            <label>Ваш ник</label><br />
+            <input type="text" name="nick_name_r" />
+            <span asp-validation-for="nick_name_r"></span>
+        </div>
+
+        <div>
+            <input type="submit" value="Зарегистрироватся" />
+        </div>
+    </div>
+    @if (!string.IsNullOrEmpty(error))
+    {
+        <h2 class="alert-danger" style="padding:20px;">@error</h2>
+    }
+    else
+    {
+        <h2 class="alert-danger" style="padding:20px;">@reg</h2>
+    }
+</form>
